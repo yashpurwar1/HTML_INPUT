@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Edge mode tells Internet Explorer to display content in the highest mode available. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- This gives the browser instructions on how to control the page's dimensions and scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Input Form</title>
+    <link rel="stylesheet" type="text/css" href="form.css" media="screen" />
+</head>
+
+<body>
+    <form>
+        <header class="headerContainer">
+            <h1>HTML-5 Employee Input Form</h1>
+        </header>
+        <div>
+            <label for="text">Name Of Emloyee:</label>
+            <input type="text" id="text" name="text">
+            <error-output for="text" class="text-error"></error-output>
+        </div>
+        <div>
+            <label for="pwd">Password:</label>
+            <input type="password" id="pwd" name="pwd">
+            <error-output for="pwd" class="pwd-error"></error-output>
+        </div>
+        <div>
+            <label for="email">Primary Email:</label>
+            <input type="email" id="email" name="email">
+            <error-output for="email" class="email-error"></error-output>
+        </div>
+        <div>
+            <label for="url">Any URL Link ?:</label>
+            <input type="url" id="url" name="url">
+        </div>
+        <div>
+            <label for="number">Mobile Number:</label required>
+            <input type="number" id="number" name="number">
+            <error-output for="text" class="number-error"></error-output>
+
+        </div>
+        <div>
+            <label for="tel">Tel-Number:</label>
+            <input type="tel" id="tel" name="tel">
+        </div>
+        <div>
+            <label for="search">Search:</label>
+            <input type="search" id="search" name="search">
+        </div>
+        <div>
+            <label for="party">Choose a Date and Time:</label>
+            <input type="datetime-local" id="party" name="bday">
+        </div>
+        <div>
+            <label for="salary">Choose your Salary:</label>
+            <input type="range" id="salary" name="salary" min="300000" max="500000" step="10" value="400000">
+            <output class="salary-output" for="salary">400000</output>
+        </div>
+        <div>
+            <button id="successfull">Submit</button>
+        </div>
+    </form>
+    
+    <script>
+        const text = document.querySelector('#text');
+        const texterror = document.querySelector('.text-error');
+        text.addEventListener('input', function() {
+            let pattern = RegExp('^[A-Z]{1}[a-z]{2,}$');
+            if (pattern.test(text.value))
+                texterror.textContent = ' ';
+            else
+                texterror.textContent = 'Name is Incorrect!';
+        });
+        console.log(text);
+    </script>
+    <script>
+        const salary = document.querySelector('#salary');
+        const salaryOutput = document.querySelector('.salary-output');
+        salaryOutput.textContent = salary.value;
+        salary.addEventListener('input', function() {
+            salaryOutput.textContent = salary.value;
+            console.log(salaryOutput.textContent);
+        });
+    </script>
+    <script>
+        const email = document.querySelector('#email');
+        const emailerror = document.querySelector('.email-error');
+        email.addEventListener('input', function() {
+            let emailpattern = RegExp('^[A-Z a-z 0-9]+([._+-][0-9 a-z A-Z]+)*@[0-9 a-z A-Z]+.[a-z A-Z]{2,3}([.][a-z A-Z]{2})*$');
+            if (emailpattern.test(email.value))
+                emailerror.textContent = ' ';
+            else
+                emailerror.textContent = 'Email is Incorrect!';
+        });
+        console.log(email);
+    </script>
+    <script>
+        const number = document.querySelector('#number');
+        const numbererror = document.querySelector('.number-error');
+        number.addEventListener('input', function() {
+            let numberpattern = RegExp('^(0|91)?[0-9]{10}$');
+            if (numberpattern.test(number.value))
+                numbererror.textContent = ' ';
+            else
+                numbererror.textContent = 'Number is Incorrect!';
+        });
+        console.log(number);
+    </script>
+
+    <script>
+        const pwd = document.querySelector('#pwd');
+        const passworderror = document.querySelector('.pwd-error');
+        pwd.addEventListener('input', function() {
+            let passwordpattern = RegExp('^(?=[0-9 A-Z a-z !@#$%^&*();:]{8,}$)(?=.*[A-Z]{1,})(?=.*[0-9]{1,})(?=.*[!@#$%^&*();:]{1,}).*$');
+            if (passwordpattern.test(pwd.value))
+                passworderror.textContent = ' ';
+            else
+                passworderror.textContent = 'Password is Incorrect!';
+        });
+        console.log(pwd);
+    </script>
+
+</body>
+
+</html>
